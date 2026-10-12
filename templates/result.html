@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Recommendations</title>
+
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        .course {
+            background: #eff6ff;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .note {
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Your Career Guidance</h1>
+            <p>Explore courses and career paths that match your interests.</p>
+        </div>
+
+        <div class="card">
+            <h2>Student Profile</h2>
+
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Qualification:</strong> {{ qualification }}</p>
+            <p><strong>Percentage:</strong> {{ percentage }}%</p>
+            <p><strong>Skills:</strong> {{ skills }}</p>
+            <p><strong>Interests:</strong> {{ interest }}</p>
+            <p><strong>Preferred Course:</strong> {{ preferred_course }}</p>
+            <p><strong>Career Goal:</strong> {{ career_goal }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Recommended Courses</h2>
+
+            {% if recommendations %}
+                {% for course in recommendations %}
+                    <div class="course">
+                        <h3>{{ course.course }}</h3>
+                        <p>{{ course.reason }}</p>
+                        <p><strong>Possible careers:</strong>
+                            {{ course.careers }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No recommendations available yet.</p>
+            {% endif %}
+
+            <p class="note">
+                These are general suggestions. Check course eligibility
+                and admission requirements before applying.
+            </p>
+
+            <a href="/" class="button">Back to Profile</a>
+        </div>
+
+    </div>
+</body>
+</html>
